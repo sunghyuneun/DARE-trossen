@@ -2,6 +2,11 @@
 
 [![MuJoCo](https://img.shields.io/badge/MuJoCo-3.2.3-orange.svg)](https://mujoco.readthedocs.io/) [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html) [![Linux](https://img.shields.io/badge/platform-Ubuntu_22.04-lightgrey.svg)](https://releases.ubuntu.com/22.04/)
 
+## Sunghyun Design Decisions
+1. Initially wanted task space control and then add End Effector + IK solvers, but that makes this task trivial to do with RL
+2. I chose to do full joint space control with RL.
+3. As rewards might be a little sparse, I think I will do curriculum learning to teach it to grab the cube first
+
 ## Overview
 
 This repository provides MuJoCo simulation environments for Trossen AI robotic arms. It includes comprehensive robot models, inverse kinematics-based control, and tools for policy execution, data collection, and visualization.
@@ -54,17 +59,6 @@ trossen_arm_mujoco/assets/
 │   ├── scene.xml                  # Basic visualization scene
 │   ├── scene_wxai_pick_place.xml  # Pick-and-place scene
 │   └── scene_wxai_follow_target.xml # Target following scene
-├── stationary_ai/
-│   ├── stationary_ai.xml          # Dual-arm stationary platform
-│   ├── stationary_ai_mocap.xml    # Mocap-enabled model with weld constraints
-│   ├── scene.xml                  # Basic visualization scene
-│   ├── scene_stationary_ai_pick_place.xml # Pick-and-place with handoff
-│   ├── scene_joint.xml            # Joint-controlled setup
-│   └── scene_mocap.xml            # Motion capture-controlled setup
-└── mobile_ai/
-    ├── mobile_ai.xml              # Mobile base + dual-arm
-    ├── scene.xml                  # Basic visualization scene
-    └── scene_mobile_ai_pick_place.xml # Mobile pick-and-place
 ```
 
 ### Asset Details
@@ -73,14 +67,6 @@ trossen_arm_mujoco/assets/
 - Base model (`wxai_base.xml`): 6-DOF arm
 - Follower model (`wxai_follower.xml`): 6-DOF arm with camera
 
-**Stationary AI** - Dual-arm stationary platform:
-- Dual WXAI arms on shared base
-- Supports bimanual coordination and object handoff
-
-**Mobile AI** - Mobile manipulator:
-- Differential drive mobile base
-- Dual WXAI arms
-- Navigation and manipulation capabilities
 
 ### Motion Capture vs Joint-Controlled Environments
 
@@ -104,7 +90,7 @@ All models are derived from URDF descriptions in [TrossenRobotics/trossen_arm_de
 First, clone this repository:
 
 ```bash
-git clone https://github.com/TrossenRobotics/trossen_arm_mujoco.git
+git clone https://github.com/sunghyuneun/DARE-trossen.git
 cd trossen_arm_mujoco
 ```
 
@@ -147,31 +133,6 @@ These scripts demonstrate inverse kinematics-based control for manipulation task
 ```bash
 python3 trossen_arm_mujoco/scripts/wxai_pick_place.py
 ```
-
-**Stationary AI** - Dual-arm pick-and-place with handoff:
-```bash
-python3 trossen_arm_mujoco/scripts/stationary_ai_pick_place.py
-```
-
-**Mobile AI** - Mobile base navigation + dual-arm manipulation:
-```bash
-python3 trossen_arm_mujoco/scripts/mobile_ai_pick_place.py
-```
-
-### Target Following Demo
-
-Real-time end-effector tracking using differential IK:
-
-```bash
-python3 trossen_arm_mujoco/scripts/wxai_follow_target.py
-```
-
-**Mouse Controls:**
-- Double-click to select/highlight the target cube
-- Ctrl + Left-click to rotate the view
-- Ctrl + Right-click to move the target cube
-
-The robot will track the target cube position in real-time.
 
 ---
 
