@@ -2,6 +2,10 @@
 
 [![MuJoCo](https://img.shields.io/badge/MuJoCo-3.2.3-orange.svg)](https://mujoco.readthedocs.io/) [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html) [![Linux](https://img.shields.io/badge/platform-Ubuntu_22.04-lightgrey.svg)](https://releases.ubuntu.com/22.04/)
 
+## Sunghyun Addons
+My initial thought was to do task space control and then add on End Effector + Inverse Kinematics solvers, but that makes this task trivial to do with RL. So I chose to do full joint space control with RL.
+
+
 ## Overview
 
 This repository provides MuJoCo simulation environments for Trossen AI robotic arms. It includes comprehensive robot models, inverse kinematics-based control, and tools for policy execution, data collection, and visualization.
