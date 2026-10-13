@@ -6,6 +6,7 @@ authors = [
   { name = "Luke Schmitt" },
   { name = "Shantanu Parab" },
   { name = "Shuhang Xu" },
+  { name = "Sunghyun Eun" },
 ]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,6 +20,7 @@ dependencies = [
   "opencv-python",
   "pyquaternion",
   "trossen_arm",
+  "stable-baselines3",
 ]
 
 [build-system]
@@ -26,7 +28,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.package-data]
-"*" = ["assets/**", ]
+"*" = ["assets/**"]
 
 [tool.codespell]
 builtin = "clear,rare,informal,usage,code,names"
@@ -34,7 +36,7 @@ check-filenames = true
 check-hidden = true
 interactive = 0
 quiet = 34
-skip="./build/*,./.venv/*,./.git*,*.toml"
+skip = "./build/*,./.venv/*,./.git*,*.toml"
 
 [tool.isort]
 profile = "black"

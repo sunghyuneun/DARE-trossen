@@ -13,12 +13,15 @@ import sys
 import mujoco
 import mujoco.viewer
 import numpy as np
+from stable_baselines3 import SAC
+
+_ = SAC  # TODO: Delete this
 from scipy.spatial.transform import Rotation
 
 from trossen_arm_mujoco.src.controller import Controller, RobotType
 
 # TODO: Pick up cube
-# 1. Add Stable Baselines
+# 1. Add Stable Baselines (Done)
 # 2. Add a standard gymnasium environment interface to interact with Stable Baselines
 # 3. Remove Inverse kinematics
 # 4. Action Space: Joint velocities
@@ -41,7 +44,7 @@ CLEARANCE_HEIGHT = 0.15
 APPROACH_OFFSET = np.array([0.0, 0.0, 0.0])
 DOWNWARD_ORIENTATION = np.array([0.70710678, 0.0, 0.70710678, 0.0])
 
-# TODO: CUstomize the Scene
+# TODO: Customize the Scene
 # Scene configuration
 SCENE_XML_PATH = "trossen_arm_mujoco/assets/wxai/scene_wxai_pick_place.xml"
 
