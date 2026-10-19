@@ -1,0 +1,32 @@
+# WidowX AI pick-and-place RL environment configuration.
+# Used by trossen_arm_mujoco/gym_wrapper.py (Trossen_Env).
+
+# Relative to the trossen_arm_mujoco package directory
+scene_xml_path: assets/wxai/scene_wxai_pick_place.xml
+
+robot:
+  arm_joint_names: [joint_0, joint_1, joint_2, joint_3, joint_4, joint_5]
+  arm_actuator_names: [joint_0, joint_1, joint_2, joint_3, joint_4, joint_5]
+  gripper_joint_names: [left_carriage_joint, right_carriage_joint]
+  gripper_actuator_name: left_gripper
+  ee_site_name: ee_site
+  # Arm joint angles (rad) at reset
+  home_qpos: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  # Gripper opening (m) at reset; 0.044 = fully open
+  gripper_open_position: 0.044
+
+control:
+  # Physics steps per env step (default timestep 0.002 s -> 25 Hz control)
+  frame_skip: 20
+  # Joint velocity (rad/s) commanded by an action of +/-1, per arm joint
+  max_joint_velocity: [1.5, 1.5, 1.5, 2.0, 2.0, 2.0]
+  max_episode_steps: 400
+
+task:
+  cube_body_name: cube
+  # [x, y, z] in meters
+  cube_initial_position: [0.35, -0.15, 0.025]
+  # Quaternion [w, x, y, z]
+  cube_initial_orientation: [1.0, 0.0, 0.0, 0.0]
+  # [x, y, z] in meters
+  target_position: [0.35, 0.15, 0.025]
